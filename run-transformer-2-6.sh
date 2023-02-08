@@ -1,18 +1,4 @@
 #!/bin/bash
-#SBATCH --job-name=run
-#SBATCH --output=oversquashing.txt
-#SBATCH --error=oversquashing.txt
-#SBATCH --ntasks=1
-#SBATCH --time=70:00:00
-#SBATCH --mem=32G
-#SBATCH --gres=gpu:32gb:1
-#SBATCH -c 8
-#SBATCH --partition=main
-
-export PYTHONUNBUFFERED=1
-module load cuda/10.2
-module load anaconda
-conda activate graphgps
 
 for seed in 7 31 91 114 61 12 832 24 138 128
 do
