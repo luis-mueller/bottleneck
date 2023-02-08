@@ -20,7 +20,6 @@ class TransformerFC(torch.nn.Module):
             torch.nn.Dropout(dropout),
         )
         self.batch_norm = torch.nn.BatchNorm1d(embed_dim)
-        self.batch_norm_dummy = torch.nn.BatchNorm1d(embed_dim)
         self.batch_norm_aggregate = torch.nn.BatchNorm1d(embed_dim)
 
         self.dropout_aggregate = torch.nn.Dropout(dropout)
