@@ -28,10 +28,11 @@ class Experiment():
         self.stopping_criterion = args.stop
         self.patience = args.patience
 
-        seed = 11
+        seed = args.seed
         torch.manual_seed(seed)
         np.random.seed(seed)
         random.seed(seed)
+        print(f"Random seed: {seed}")
 
         self.X_train, self.X_test, dim0, out_dim, self.criterion = \
             self.task.get_dataset(self.depth, self.train_fraction)
@@ -40,7 +41,8 @@ class Experiment():
                                 last_layer_fully_adjacent=args.last_layer_fully_adjacent, unroll=args.unroll,
                                 layer_norm=not args.no_layer_norm,
                                 use_activation=not args.no_activation,
-                                use_residual=not args.no_residual
+                                use_residual=not args.no_residual,
+                                attention_dropout=args.attention_dropout
                                 ).to(self.device)
 
         print(f'Starting experiment')

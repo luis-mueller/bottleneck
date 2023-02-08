@@ -1,11 +1,11 @@
 import torch
 from torch import nn
 from torch.nn import functional as F
-
+from common import GNN_TYPE
 
 class GraphModel(torch.nn.Module):
     def __init__(self, gnn_type, num_layers, dim0, h_dim, out_dim, last_layer_fully_adjacent,
-                 unroll, layer_norm, use_activation, use_residual):
+                 unroll, layer_norm, use_activation, use_residual, attention_dropout):
         super(GraphModel, self).__init__()
         self.gnn_type = gnn_type
         self.unroll = unroll
@@ -23,12 +23,14 @@ class GraphModel(torch.nn.Module):
         if unroll:
             self.layers.append(gnn_type.get_layer(
                 in_dim=h_dim,
-                out_dim=h_dim))
+                out_dim=h_dim,
+                attention_dropout=attention_dropout))
         else:
             for i in range(num_layers):
                 self.layers.append(gnn_type.get_layer(
                     in_dim=h_dim,
-                    out_dim=h_dim))
+                    out_dim=h_dim,
+                    attention_dropout=attention_dropout))
         if self.use_layer_norm:
             for i in range(num_layers):
                 self.layer_norms.append(nn.LayerNorm(h_dim))
@@ -59,7 +61,10 @@ class GraphModel(torch.nn.Module):
 
             else:
                 edges = edge_index
-            new_x = layer(new_x, edges)
+            if self.gnn_type is GNN_TYPE.Transformer:
+                new_x = layer(new_x, batch)
+            else:
+                new_x = layer(new_x, edges)
             if self.use_activation:
                 new_x = F.relu(new_x)
             if self.use_residual:

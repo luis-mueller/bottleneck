@@ -1,3 +1,8 @@
+> NOTE: This is a fork created for our paper [Attention to Graph Transformers](). We made only the minimal changes
+> necessary to support a Transformer in the NeighborsMatch problem and left the rest of the repository untouched.
+> Instructions for setting up and running the experiments can be found below. We provide the exact commands used for our experimental
+> results in `run-transformer-2-6.sh`.
+
 # On the Bottleneck of Graph Neural Networks and its Practical Implications
 
 This is the official implementation of the paper: [On the Bottleneck of Graph Neural Networks and its Practical Implications](https://openreview.net/pdf?id=i80OPhOCVH2) (ICLR'2021),
