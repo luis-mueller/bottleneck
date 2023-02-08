@@ -18,6 +18,7 @@ if __name__ == '__main__':
     parser.add_argument("--eval_every", dest="eval_every", default=100, type=int, required=False)
     parser.add_argument("--batch_size", dest="batch_size", default=1024, type=int, required=False)
     parser.add_argument("--accum_grad", dest="accum_grad", default=1, type=int, required=False)
+    parser.add_argument("--seed", dest="seed", default=0, type=int, required=False)
     parser.add_argument("--stop", dest="stop", default=STOP.TRAIN, type=STOP.from_string, choices=list(STOP),
                         required=False)
     parser.add_argument("--patience", dest="patience", default=20, type=int, required=False)
@@ -26,6 +27,7 @@ if __name__ == '__main__':
     parser.add_argument('--no_layer_norm', action='store_true')
     parser.add_argument('--no_activation', action='store_true')
     parser.add_argument('--no_residual', action='store_true')
+    parser.add_argument("--attention_dropout", dest="attention_dropout", default=0.0, type=float, required=False)
     parser.add_argument('--unroll', action='store_true', help='use the same weights across GNN layers')
 
     args = parser.parse_args()
