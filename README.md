@@ -1,4 +1,4 @@
-> NOTE: This is a fork created for our paper [Attending to Graph Transformers](). We made only the minimal changes
+> NOTE: This is a fork created for our paper [Attending to Graph Transformers](https://arxiv.org/abs/2302.04181). We made only the minimal changes
 > necessary to support a Transformer in the NeighborsMatch problem and left the rest of the repository untouched.
 > Instructions for setting up and running the experiments can be found below. We provide the exact commands used for our experimental
 > results in `run-transformer-2-6.sh`.
