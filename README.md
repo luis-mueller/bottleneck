@@ -1,3 +1,4 @@
+[![arXiv](https://img.shields.io/badge/arXiv-2302.04181-b31b1b.svg)](https://arxiv.org/abs/2302.04181)
 > NOTE: This is a fork created for our paper [Attending to Graph Transformers](https://arxiv.org/abs/2302.04181). We made only the minimal changes
 > necessary to support a Transformer in the NeighborsMatch problem and left the rest of the repository untouched.
 > Instructions for setting up and running the experiments can be found below. We provide the exact commands used for our experimental
